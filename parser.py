@@ -21,12 +21,12 @@ def parse_request(raw_data):
     except UnicodeDecodeError: 
         return None
     
-    lines = request_text.split('\n\r')
+    lines = request_text.split('\r\n')
 
     if  not lines:
         return None
     
-    parts = lines[0].split('');
+    parts = lines[0].split(' ');
 
     if  len(parts) != 3:
        return  None
@@ -49,7 +49,7 @@ def parse_request(raw_data):
     body_start = i + 1
 
     if body_start < len(lines):
-        body = '\n\r'.join(lines[body_start:])
+        body = '\r\n'.join(lines[body_start:])
         body.encode('utf-8')
     else: 
         body = b''
